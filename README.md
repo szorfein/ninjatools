@@ -1,21 +1,23 @@
 # ninjatools
 Some ebuild for Gentoo
 
-HOWTO
-
-  first u need to install layman
-    -> # echo "app-portage/layman +git" > /etc/portage/package.use/layman
-    -> # emerge -av layman
+<h2>HOWTO</h2>
+<p>
+  first u need to install layman<br />
+    -> # echo ">=app-portage/layman-2.3.0" >> /etc/portage/package.accept_keywords <br />
+    -> # echo "app-portage/layman git" > /etc/portage/package.use/layman <br />
+    -> # emerge -av layman <br />
     
-  Configure the depot
-    -> # mkdir -p /etc/portage/repos.conf
-    -> # vim /etc/portage/repos.conf/ninjatools
-    [Ninja-Tools]
-    location = /usr/local/portage
-    sync-type = git
-    sync-url = git://github.com/szorfein/ninjatools.git
-    auto-sync = no
-    -> Save and quit
+  Configure the depot <br />
+    -> # mkdir -p /etc/portage/repos.conf <br />
+    -> # vim /etc/portage/repos.conf/ninjatools <br />
+    [Ninja-Tools] <br />
+    location = /usr/local/portage <br />
+    sync-type = git <br />
+    sync-url = git://github.com/szorfein/ninjatools.git <br />
+    auto-sync = no <br />
+    -> Save and quit <br />
     
-  Ok now for sync it
-    -> $ emaint sync -r Ninja-Tools
+  Ok now for sync it <br />
+    -> $ emaint sync -r Ninja-Tools <br />
+</p>
