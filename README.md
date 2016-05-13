@@ -12,7 +12,7 @@ Some ebuild for Gentoo
     [Ninja-Tools] <br />
     location = /usr/local/portage <br />
     sync-type = git <br />
-    sync-url = git://github.com/szorfein/ninjatools.git <br />
+    sync-url = https://github.com/szorfein/ninjatools.git <br />
     auto-sync = no <br />
     -> Save and quit <br />
 </p>
