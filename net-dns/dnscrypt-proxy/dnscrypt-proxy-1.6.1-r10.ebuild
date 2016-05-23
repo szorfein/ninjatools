@@ -46,7 +46,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "After starting the service you will need to update your"
+	elog "Before starting the service you will need to update your"
 	elog "/etc/resolv.conf and replace your current set of resolvers"
 	elog "with:"
 	elog
