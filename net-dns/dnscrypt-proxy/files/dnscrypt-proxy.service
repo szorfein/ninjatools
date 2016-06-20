@@ -19,7 +19,7 @@ ExecStart=/usr/sbin/dnscrypt-proxy \
    --resolver-name=${DNSCRYPT_RESOLVER_NAME} \
    --user=${DNSCRYPT_USER} \
    --resolvers-list=${DNSCRYPT_RESOLVERS_LIST}
-Restart=on-abord
+Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
