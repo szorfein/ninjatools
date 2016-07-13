@@ -1,22 +1,22 @@
 # ninjatools
 Some ebuild for Gentoo
 
-<h2>HOWTO</h2>
-<p>
-  Configure the depot <br />
+##HOWTO  
+
+Configure the repository:  
     
-    -> # mkdir -p /etc/portage/repos.conf <br />
+    # mkdir -p /usr/local/portage
+    # mkdir -p /etc/portage/repos.conf
+    # vim /etc/portage/repos.conf/ninjatools.conf
     
-    -> # vim /etc/portage/repos.conf/ninjatools.conf <br />
-    
-    [Ninja-Tools] <br />
-    location = /usr/local/portage <br />
-    sync-type = git <br />
-    sync-url = https://github.com/szorfein/ninjatools.git <br />
-    auto-sync = no <br />
-    -> Save and quit <br />
-</p>
-<p>
-  Ok now for sync it <br />
-    -> $ emaint sync -r Ninja-Tools <br />
-</p>
+    [Ninja-Tools]
+    location = /usr/local/portage
+    sync-type = git
+    sync-url = https://github.com/szorfein/ninjatools.git
+    auto-sync = no  
+
+Save and quit
+
+##Ok now, sync it !
+
+    $ emaint sync -r Ninja-Tools
