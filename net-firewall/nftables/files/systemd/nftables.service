@@ -1,0 +1,14 @@
+[Unit]
+Description=Store and restore nftables firewall rules
+Documentation=man:nft(8)
+Wants=network-pre.target
+Before=network-pre.target
+
+[Service]
+ExecStart=/sbin/nft -f /var/lib/nftables/rules-save
+ExecReload=/sbin/nft -f /usr/lib/systemd/scripts/nftables-reload
+ExecStop=/sbin/nft flush ruleset
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
