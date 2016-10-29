@@ -17,9 +17,9 @@ LICENSE="BSD-2"
 SLOT="0"
 
 COMPRESSOR_USE=( bzip2 gzip lz4 lzo xz )
-FS_USE=( btrfs e2fs f2fs jfs reiserfs xfs libzfs )
+FS_USE=( btrfs e2fs f2fs jfs reiserfs xfs zfs )
 IUSE="aufs +bash cryptsetup device-mapper dmraid fbsplash lzma mdadm squashfs
-gnupg libzfs +zram zsh ${COMPRESSOR_USE[@]/xz/+xz} ${FS_USE[@]/e2fs/+e2fs}"
+gnupg zfs +zram zsh ${COMPRESSOR_USE[@]/xz/+xz} ${FS_USE[@]/e2fs/+e2fs}"
 
 REQUIRED_USE="
 	|| ( ${COMPRESSOR_USE[@]} )
@@ -42,14 +42,14 @@ RDEPEND="app-arch/cpio
 	reiserfs? ( sys-fs/reiserfsprogs )
 	squashfs? ( sys-fs/squashfs-tools[lz4?,lzma?,lzo?,xz?] )
 	xfs? ( sys-fs/xfsprogs )
-	libzfs? ( sys-fs/zfs )
+	zfs? ( sys-fs/zfs )
 	lzma? ( || ( app-arch/xz-utils app-arch/lzma ) )
 	lzo? ( app-arch/lzop )
 	xz? ( app-arch/xz-utils )
 	media-fonts/terminus-font[psf]
 	bash? ( app-shells/bash )
 	zsh? ( app-shells/zsh[unicode] )
-	gnupg? ( <=app-crypt/gnupg-2.0.28 )"
+	gnupg? ( <=app-crypt/gnupg-2.0 )"
 
 for (( i=0; i<$((${#COMPRESSOR_USE[@]} - 2)); i++ )); do
 	RDEPEND="${RDEPEND}
@@ -73,7 +73,11 @@ pkg_setup()
 	for u in ${FS_USE[@]/e2fs}; do
 		U="${u^^[a-z]}"
 		if use "${u}"; then
-			CONFIG_CHECK+=" ~${U}_FS"
+			if [ "${u}" == "zfs" ] ; then
+				CONFIG_CHECK+=" ~${U} "
+			else
+				CONFIG_CHECK+=" ~${U}_FS"
+			fi
 			eval : ERROR_"${U}"="no supprt of ${u} file system found"
 		fi
 	done
