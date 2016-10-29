@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: sys-kernel/mkinitramfs-ll/mkinitramfs-ll-9999.ebuild,v 1.16 2015/05/26 08:41:42 Exp $
 
-EAPI=6
+EAPI=5
 
 KEYWORDS="~amd64 ~arm ~x86"
 VCS_ECLASS=vcs-snapshot
