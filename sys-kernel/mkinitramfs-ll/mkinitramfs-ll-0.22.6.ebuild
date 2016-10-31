@@ -49,7 +49,7 @@ RDEPEND="app-arch/cpio
 	media-fonts/terminus-font[psf]
 	bash? ( app-shells/bash )
 	zsh? ( app-shells/zsh[unicode] )
-	gnupg? ( <=app-crypt/gnupg-2.0 )"
+	gnupg? ( app-crypt/gnupg )"
 
 for (( i=0; i<$((${#COMPRESSOR_USE[@]} - 2)); i++ )); do
 	RDEPEND="${RDEPEND}
