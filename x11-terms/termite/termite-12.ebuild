@@ -27,10 +27,22 @@ SLOT="0"
 IUSE=""
 
 LIBDEPEND=">=x11-libs/gtk+-3.0
-	>=x11-libs/vte-0.43.2:2.91
+	>=x11-libs/vte-ng-0.43.2:2.91
 	"
 DEPEND="${LIBDEPEND}"
 RDEPEND="${LIBDEPEND}"
+
+#pkg_pretend() {
+#	if ! version_is_at_least 4.7 $(gcc-version); then
+#		eerror "${PN} passes -std=c++11 to \${CXX} and requires a version"
+#		eerror "of gcc newer than 4.7.0"
+#	fi
+#}
+
+#pkg_setup() {
+#	# Makefile prepends -O3
+#	CXXFLAGS="-O0 ${CXXFLAGS}"
+#}
 
 src_prepare() {
 	default
