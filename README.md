@@ -1,7 +1,7 @@
 # ninjatools
 Somes additional ebuild for Gentoo.
 
-##HOWTO  
+## HOWTO  
 Create required directory:
     
     # mkdir -p /usr/local/ninjatools
@@ -21,6 +21,6 @@ or git:// [Require port 9418 open]
 
 Save and quit
 
-##Ok now, sync it !
+## Ok now, sync it !
 
     $ emaint sync -r ninjatools 
