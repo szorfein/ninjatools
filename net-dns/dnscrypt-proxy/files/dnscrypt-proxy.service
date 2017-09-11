@@ -1,6 +1,5 @@
 [Unit]
-Description=DNSCrypt client proxy
-Documentation=man:dnscrypt-proxy(8)
+Description=A tool for securing communications between a client and a DNS resolver
 Requires=dnscrypt-proxy.socket
 After=network.target
 Before=nss-lookup.target
@@ -12,13 +11,16 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 NonBlocking=true
+PIDFile=/var/run/dnscrypt-proxy.pid
 EnvironmentFile=/etc/conf.d/dnscrypt-proxy
 ExecStartPre=/bin/rm -f /var/run/dnscrypt-proxy.pid
 ExecStart=/usr/sbin/dnscrypt-proxy \
-   --local-address=${DNSCRYPT_LOCALIP}:${DNSCRYPT_LOCALPORT} \
-   --resolver-name=${DNSCRYPT_RESOLVER_NAME} \
-   --user=${DNSCRYPT_USER} \
-   --resolvers-list=${DNSCRYPT_RESOLVERS_LIST}
+    --pidfile=/var/run/dnscrypt-proxy.pid \
+    --logfile=/var/log/dnscrypt-proxy.log \
+    --local-address=${DNSCRYPT_LOCALIP}:${DNSCRYPT_LOCALPORT} \
+    --resolver-name=${DNSCRYPT_RESOLVER_NAME} \
+    --user=${DNSCRYPT_USER} \
+    --resolvers-list=${DNSCRYPT_RESOLVERS_LIST}
 Restart=on-abort
 
 [Install]
