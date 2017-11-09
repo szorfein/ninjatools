@@ -9,8 +9,7 @@ Create required directory:
 
 Configure the repository:  
 
-Change sync-uri bellow with https:// if you have compile git with curl [Require port 443]
-or git:// [Require port 9418 open]
+Change `sync-uri` bellow with `https://` if you have compile `git` with `curl` which require the port 443 open or `git://` (need port 9418 open).  
 
     # vim /etc/portage/repos.conf/ninjatools.conf
     [ninjatools]
@@ -24,3 +23,7 @@ Save and quit
 ## Ok now, sync it !
 
     $ emaint sync -r ninjatools 
+
+## Troubleshooting
+
+If you found a package that doesn't work, please, post an issue. They work when i put here but can become obsolete when other packages are updates. 
