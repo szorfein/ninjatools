@@ -1,25 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 inherit autotools linux-info systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
-HOMEPAGE="http://netfilter.org/projects/nftables/"
-SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://netfilter.org/projects/nftables/"
+SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug doc gmp +readline"
+IUSE="debug doc +gmp +readline"
 
-RDEPEND=">=net-libs/libmnl-1.0.3
+RDEPEND=">=net-libs/libmnl-1.0.3:0=
 	gmp? ( dev-libs/gmp:0= )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.0.7
-	"
+	>=net-libs/libnftnl-1.0.8:0="
+
 DEPEND="${RDEPEND}
 	>=app-text/docbook2X-0.8.8-r4
 	doc? ( >=app-text/dblatex-0.3.7 )
@@ -44,12 +43,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--sbindir="${EPREFIX}"/sbin \
-		$(use_enable doc pdf-doc) \
-		$(use_enable debug) \
-		$(use_with readline cli) \
+	local myeconfargs=(
+		--sbindir="${EPREFIX}"/sbin
+		$(use_enable doc pdf-doc)
+		$(use_enable debug)
+		$(use_with readline cli)
 		$(use_with !gmp mini_gmp)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -62,8 +63,8 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	keepdir /var/lib/nftables
-    
-    dodir /usr/lib/systemd/scripts
+
+	dodir /usr/lib/systemd/scripts
 
 	cp "${FILESDIR}"/systemd/nftables-reload "${D}"/usr/lib/systemd/scripts/
 	cp "${FILESDIR}"/nftables_example.conf "${D}"/etc/nftables/
@@ -74,15 +75,15 @@ src_install() {
 
 pkg_postinst() {
 	local save_file
-	save_file="${EROOT}var/lib/nftables/rules-save"
+	save_file="${EROOT%/}/var/lib/nftables/rules-save"
 
-	elog "In order for the nftables-restore systemd service to start, "
-	elog "the file, ${save_file}, must exist.  To create this "
-	elog "file run the following command: "
-	elog ""
-	elog "	cp /etc/${PN}/${PN}_example.conf '${save_file}'"
-	elog ""
-	elog "Afterwards, the nftables-restore service should be manually started "
-	elog "to ensure firewall changes are stored on system shutdown.  The "
-	elog "systemd service will function normally thereafter."
+	# In order for the nftables-restore systemd service to start
+	# the save_file must exist.
+	if [[ ! -f ${save_file} ]]; then
+		touch ${save_file}
+	fi
+
+	elog "If you are creating firewall rules before the next system restart "
+	elog "the nftables-restore service must be manually started in order to "
+	elog "save those rules on shutdown."
 }
