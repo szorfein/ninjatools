@@ -1,0 +1,25 @@
+diff --git a/lib/i3ipcpp/src/ipc.cpp b/lib/i3ipcpp/src/ipc.cpp
+index a399ef5..a5f126b 100644
+--- a/lib/i3ipcpp/src/ipc.cpp
++++ b/lib/i3ipcpp/src/ipc.cpp
+@@ -21,12 +21,14 @@ std::vector<std::ostream*>  g_logging_err_outs = {
+ };
+ 
+ #define IPC_JSON_READ(ROOT) \
+-	{ \
+-		Json::Reader  reader; \
+-		if (!reader.parse(std::string(buf->payload, buf->header->size), ROOT, false)) { \
+-			throw invalid_reply_payload_error(auss_t() << "Failed to parse reply on \"" i3IPC_TYPE_STR "\": " << reader.getFormattedErrorMessages()); \
+-		} \
+-	}
++{ \
++    Json::CharReaderBuilder b; \
++    Json::CharReader* reader(b.newCharReader()); \
++    JSONCPP_STRING error; \
++    if(!reader->parse(buf->payload, buf->payload + buf->header->size, &ROOT, &error)) { \
++        throw invalid_reply_payload_error(auss_t() << "Failed to parse reply on \"" i3IPC_TYPE_STR "\": " << error); \
++    } \
++}
+ 
+ #define IPC_JSON_ASSERT_TYPE(OBJ, OBJ_DESCR, TYPE_CHECK, TYPE_NAME) \
+ 	{\
