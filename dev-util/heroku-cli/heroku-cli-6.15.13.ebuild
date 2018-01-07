@@ -4,21 +4,19 @@
 
 EAPI=6
 
-MY_P="heroku"
-
-DESCRIPTION="heroku-cli for gentoo"
-HOMEPAGE="https://heroku.com"
-SRC_URI="https://cli-assets.heroku.com/${PN}/channels/stable/${PN}-linux-x64.tar.gz -> ${MY_P}.tar.gz"
-
-S="${WORKDIR}/${PN}"
+DESCRIPTION="The Heroku CLI is used to manage Heroku apps from the command line"
+HOMEPAGE="https://github.com/heroku"
+SRC_URI="https://github.com/heroku/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="net-libs/nodejs"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}"
 
 src_unpack() {
 	unpack ${A}
