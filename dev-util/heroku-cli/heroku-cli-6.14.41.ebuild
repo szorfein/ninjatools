@@ -3,17 +3,19 @@
 # $Id$
 
 EAPI=6
+P_VERSION="47054d2"
 
+# get last version here https://cli-assets.heroku.com/heroku-cli/channels/stable/version
 DESCRIPTION="The Heroku CLI is used to manage Heroku apps from the command line"
 HOMEPAGE="https://github.com/heroku"
-SRC_URI="https://github.com/heroku/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://cli-assets.heroku.com/${PN}/channels/stable/${PN}-v${PV}-${P_VERSION}-linux-x64.tar.gz -> ${P}.tar.gz"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="net-libs/nodejs"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
