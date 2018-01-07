@@ -7,12 +7,12 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 cmake-utils toolchain-funcs versionator
 
-POLYBAR_ECOMMIT="5737156ae5ea1b179032609dac29d3e60f0773c2"
-XPP_ECOMMIT="61f42bbca835b3cf9968de42fd46ffe404b73dca"
-I3IPCPP_ECOMMIT="8ed783100bbc8053fd7d8e19cef58cd097ff23f7"
+POLYBAR_ECOMMIT="bf16a4d415ea7d8845f578544de0c71e56ad314e"
+XPP_ECOMMIT="c73db50f3020b7abe294631b25a2d302fcd9e1cb"
+I3IPCPP_ECOMMIT="a6aa7a19786bdf7b96a02900510b3b3c325c8bdf"
 
 DESCRIPTION="A fast and easy-to-use status bar"
-HOMEPAGE="https://github.com/jaagr/${PN}"
+HOMEPAGE="https://github.com/jaagr/polybar"
 SRC_URI="https://github.com/jaagr/${PN}/archive/${POLYBAR_ECOMMIT}.tar.gz -> ${PF}.tar.gz
 	https://github.com/jaagr/xpp/archive/${XPP_ECOMMIT}.tar.gz -> xpp-${XPP_ECOMMIT}.tar.gz
 	https://github.com/jaagr/i3ipcpp/archive/${I3IPCPP_ECOMMIT}.tar.gz -> i3ipcpp-${I3IPCPP_ECOMMIT}.tar.gz"
@@ -28,30 +28,20 @@ RESTRICT="mirror"
 
 # We need jsoncpp-1.8.0 to avoid: https://github.com/jaagr/polybar/issues/236
 # see also https://bugs.gentoo.org/show_bug.cgi?id=601204
-
-# Compile with i3 does not work for now 
-# i3? (
-# x11-wm/i3-gaps
-# >=dev-libs/jsoncpp-1.8.0
-# )
-
-RDEPEND="
-	media-libs/fontconfig
+RDEPEND="media-libs/fontconfig
 	x11-libs/cairo[X,xcb]
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
+	i3? ( || ( x11-wm/i3-gaps x11-wm/i3 )
+		>=dev-libs/jsoncpp-1.8.0
+	)
 	mpd? ( media-libs/libmpdclient )
-	network? ( net-wireless/wireless-tools )
-"
-
-DEPEND="
-	${RDEPEND}
-	>=x11-proto/xcb-proto-1.12-r2
-	sys-devel/clang
-"
+	network? ( net-wireless/wireless-tools )"
+DEPEND="${RDEPEND}
+	>=x11-proto/xcb-proto-1.12-r2"
 
 pkg_pretend() {
 	# A C++14 compliant compiler is required
@@ -72,6 +62,10 @@ src_prepare() {
 	rm -r lib/i3ipcpp/libs/jsoncpp-1.7.7 || die
 	rm -r lib/jsoncpp-1.7.7.tar.gz || die
 
+	# patch to avoid #741
+	# https://github.com/jaagr/polybar/issues/741
+	#epatch "${FILESDIR}"/ipc-cpp.patch
+
 	default
 }
 
@@ -83,8 +77,7 @@ src_configure() {
 		-DENABLE_CCACHE="OFF"
 		-DENABLE_ALSA="$(usex alsa)"
 		-DENABLE_CURL="$(usex curl)"
-		#-DENABLE_I3="$(usex i3)"
-		-DENABLE_I3="OFF"
+		-DENABLE_I3="$(usex i3)"
 		-DENABLE_MPD="$(usex mpd)"
 		-DENABLE_NETWORK="$(usex network)"
 		-DENABLE_XKEYBOARD="ON"
@@ -107,16 +100,10 @@ src_configure() {
 	)
 
 	# For gcc >= 7, we should compile with clang, look #572
-	export CC=/usr/bin/clang
-	export CXX=/usr/bin/clang++
+	#export CC=/usr/bin/clang
+	#export CXX=/usr/bin/clang++
 
 	use debug && CMAKE_BUILD_TYPE=Debug
-	cmake-utils_src_configure
-}
 
-pkg_postinst() {
-	elog ""
-	elog "Base configuration to:"
-	elog "/usr/share/doc/polybar/config.bz2"
-	elog ""
+	cmake-utils_src_configure
 }
