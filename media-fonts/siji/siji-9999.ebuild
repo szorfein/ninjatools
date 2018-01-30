@@ -4,12 +4,11 @@
 
 EAPI=6
 
-inherit font
+inherit font git-r3
 
 DESCRIPTION="Siji is an iconic bitmap font based on the Stlarch font with additional glyphs."
 HOMEPAGE="https://github.com/stark/siji"
-SRC_URI="https://github.com/stark/siji/archive/master.zip -> ${P}.zip"
-
+EGIT_REPO_URI="https://github.com/stark/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -18,14 +17,14 @@ IUSE="plugins"
 DEPEND="plugins? ( x11-apps/xfd )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-master/pcf/"
+S="${WORKDIR}/${P}/pcf/"
 FONT_S="${PN}"
 FONT_SUFFIX="pcf"
 
 pkg_preinst() {
 
 	if use plugins ; then
-		mv -f "${WORKDIR}/${PN}-master/view.sh" "${PN}_view"
+		mv -f "${WORKDIR}/${P}/view.sh" "${PN}_view"
 		dobin "${PN}_view"
 	fi
 }
