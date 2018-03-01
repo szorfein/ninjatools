@@ -1,0 +1,15 @@
+[Unit]
+Description=Darkhttpd Webserver
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/darkhttpd
+ExecStart=/usr/bin/darkhttpd ${DARKHTTP_PATH} --port ${DARKHTTP_PORT} --uid ${DARKHTTP_USER} --gid ${DARKHTTP_GROUP} --chroot --no-listing --mimetypes ${DARKHTTP_MIME}
+ProtectSystem=full
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
+
+[Install]
+WantedBy=multi-user.target

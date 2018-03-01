@@ -1,0 +1,10 @@
+# Change default port
+DARKHTTP_PORT="80"
+# path to serve
+DARKHTTP_PATH="/srv/http"
+# Group
+DARKHTTP_GROUP="darkhttp"
+# User
+DARKHTTP_USER="darkhttp"
+# mimetypes
+DARKHTTP_MIME="/etc/conf.d/mimetypes"
