@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
+EAPI=6
 
 SRC_URI="https://github.com/LemonBoy/bar/archive/v${PV}.zip"
 KEYWORDS="~amd64"
@@ -24,4 +23,5 @@ DOCS="README.pod"
 
 src_prepare() {
 	sed -i -e 's/-Os//' Makefile || die "Sed failed"
+	default
 }
