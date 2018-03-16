@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# get colors from  : https://material.io/guidelines/style/color.html#color-color-palette
+
+# Default: #00BCD4 = Cyan500
+COLOR_SELECTION='#00BCD4'
+
+# Default: #4DB6AC = Teal300
+COLOR_ACCENT='#4DB6AC'
+
+# Default: #009688 = Teal500
+COLOR_SUGGESTION='#009688'
+
+# Default: #FF5252 = RedA200
+COLOR_DESTRUCTION='#FF5252'
