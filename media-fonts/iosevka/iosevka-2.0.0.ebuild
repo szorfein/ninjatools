@@ -8,7 +8,7 @@ inherit font
 
 DESCRIPTION="ttf font based on PragmaticPro"
 HOMEPAGE=""
-SRC_URI="https://github.com/be5invis/Iosevka/releases/download/v${PV}/${PN}-term-ss10-${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/be5invis/Iosevka/releases/download/v${PV}/02-${PN}-term-${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,10 +20,3 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/ttf"
 FONT_SUFFIX="ttf"
-
-pkg_postinst() {
-	ewarn "for termite, u can try in config file"
-	ewarn "font = Iosevka Term Medium 9"
-	ewarn "You can test with fc-match"
-	ewarn "fc-match Iosevka\ Term\ Medium"
-}
