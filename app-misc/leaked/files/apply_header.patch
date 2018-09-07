@@ -1,0 +1,9 @@
+--- a/leaked.py	2018-09-07 17:25:03.141658416 +0200
++++ b/leaked.py	2018-09-07 17:24:24.646657641 +0200
+@@ -1,3 +1,6 @@
++#!/usr/bin/env python
++# -*- coding: utf-8 -*-
++
+ import os
+ import json
+ import requests
