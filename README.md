@@ -1,28 +1,21 @@
 # ninjatools
+
 Somes additional ebuild for Gentoo.
 
 ## HOWTO  
-Create required directory:
+
+Create the required directory:
     
     # mkdir -p /usr/local/ninjatools
     # mkdir -p /etc/portage/repos.conf
 
-Configure the repository:  
+Download the ninjatools.conf: 
 
-Change `sync-uri` bellow with `https://` if you have compile `git` with `curl` which require the port 443 open or `git://` (need port 9418 open).  
+    # wget -P /etc/portage/repos.conf/ https://raw.githubusercontent.com/szorfein/ninjatools/master/ninjatools.conf
 
-    # vim /etc/portage/repos.conf/ninjatools.conf
-    [ninjatools]
-    location = /usr/local/ninjatools
-    sync-type = git
-    sync-uri = https://github.com/szorfein/ninjatools.git
-    auto-sync = no  
+## Sync it.
 
-Save and quit
-
-## Ok now, sync it !
-
-    $ emaint sync -r ninjatools 
+    # emaint sync --repo ninjatools 
 
 ## Troubleshooting
 
