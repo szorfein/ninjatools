@@ -1,0 +1,10 @@
+--- a/hash-identifier	2018-10-12 12:34:06.519633238 +0200
++++ B/hash-identifier	2018-10-12 13:37:13.473709481 +0200
+@@ -1,5 +1,5 @@
+-#!/usr/bin/env python
+-# encoding: utf-8
++#!/usr/bin/env python2.7^M
++# -*- encoding: utf-8 -*-^M
+ # Hash Identifier v1.1
+ # By Zion3R
+ # www.Blackploit.com
