@@ -1,4 +1,2 @@
-amd64 default/17.0/hardened_systemd stable
-amd64 default/17.0/hardened_systemd_no-multilib stable
+amd64 hardened/17.0/no-multilib/systemd stable
 amd64 hardened/17.0/systemd stable
-amd64 hardened/17.0/systemd_no-multilib stable
