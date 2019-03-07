@@ -40,7 +40,7 @@ media-gfx/imagemagick[opencl]
 ninjatools-full? (
 x11-terms/kitty
 app-admin/pscircle
-app-editor/vim[X]
+app-editors/vim[X]
 app-shells/zsh
 app-text/zathura
 app-text/zathura-pdf-mupdf
@@ -50,7 +50,7 @@ app-vim/nerdtree
 app-vim/pathogen
 dev-python/pillow[jpeg]
 mail-client/mutt[gpg]
-media-gfx/imagemagick[jpeg]
+media-gfx/imagemagick[jpeg,png]
 net-mail/offlineimap[ssl]
 net-misc/aria2[adns]
 net-misc/autossh
