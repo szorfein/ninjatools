@@ -25,7 +25,7 @@ DOCS=( README.md )
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
-    eapply "${FILESDIR}/apply_header.patch"
+    #eapply "${FILESDIR}/apply_header.patch"
 	default
 }
 
