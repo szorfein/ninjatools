@@ -1,2 +1,2 @@
-../../../../../../../../portage/profiles/default/linux/amd64/17.1/hardened/selinux
-../../../../../../../../portage/profiles/default/linux/amd64/17.1/systemd
+gentoo:default/linux/amd64/17.1/hardened/selinux
+gentoo:default/linux/amd64/17.1/systemd
