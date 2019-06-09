@@ -1,2 +1,6 @@
 amd64 hardened/17.0/no-multilib/systemd stable
 amd64 hardened/17.0/systemd stable
+amd64 default/17.1/systemd/hardened stable
+amd64 default/17.1/systemd/hardened/selinux stable
+amd64 default/17.1/systemd/no-multilib/hardened stable
+amd64 default/17.1/systemd/no-multilib/hardened/selinux stable
