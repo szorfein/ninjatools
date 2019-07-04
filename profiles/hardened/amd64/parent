@@ -1,5 +1,4 @@
 gentoo:default/linux/amd64/17.1
 gentoo:features/hardened/amd64
-gentoo:features/selinux
 gentoo:targets/systemd
 ninjatools:base

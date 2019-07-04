@@ -1,2 +1,4 @@
 amd64 hardened/amd64/ stable
+amd64 hardened/amd64/selinux stable
 amd64 hardened/amd64/no-multilib stable
+amd64 hardened/amd64/no-multilib/selinux stable
