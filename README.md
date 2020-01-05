@@ -20,3 +20,7 @@ Download the ninjatools.conf:
 ## Troubleshooting
 
 If you found a package that doesn't work, please, post an issue. They work when i put here but can become obsolete when other packages are updates. 
+
+### Support
+Any support will be greatly appreciated, star the repo, coffee, donation... thanks you !   
+[![Donate](https://img.shields.io/badge/don-librapay-1ba9a4)](https://liberapay.com/szorfein) [![Donate](https://img.shields.io/badge/don-patreon-ab69f4)](https://www.patreon.com/szorfein)
