@@ -1,2 +1,2 @@
-../../../../../../../../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1/hardened/selinux
-../../../../../../../../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1/systemd
+../../../../../../../gentoo/profiles/default/linux/amd64/17.1/hardened/selinux
+../../../../../../../gentoo/profiles/default/linux/amd64/17.1/systemd
