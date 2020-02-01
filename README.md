@@ -6,7 +6,7 @@ Somes additional ebuild for Gentoo.
 
 Create the required directory:
     
-    # mkdir -p /usr/local/ninjatools
+    # mkdir -p /var/db/repos/ninjatools
     # mkdir -p /etc/portage/repos.conf
 
 Download the ninjatools.conf: 
