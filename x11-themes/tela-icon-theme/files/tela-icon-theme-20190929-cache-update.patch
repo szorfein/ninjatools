@@ -1,0 +1,12 @@
+diff --git a/install.sh b/install.sh
+index 512aac6d..5a3ed757 100755
+--- a/install.sh
++++ b/install.sh
+@@ -108,7 +108,6 @@ install_theme() {
+   ln -sr "${THEME_DIR}/32"                                                       "${THEME_DIR}/32@2x"
+   ln -sr "${THEME_DIR}/scalable"                                                 "${THEME_DIR}/scalable@2x"
+ 
+-  gtk-update-icon-cache "${THEME_DIR}"
+ }
+ 
+ while [ $# -gt 0 ]; do
