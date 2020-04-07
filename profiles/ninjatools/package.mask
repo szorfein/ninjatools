@@ -1,0 +1,9 @@
+# Follow the dependencies of metasploit, work with ruby25 actually
+dev-lang/ruby:2.4
+
+# Follow the last version working with ZFS -(=5.4)-
+sys-kernel/gentoo-sources:5.5
+
+#
+sys-devel/clang:7
+sys-devel/clang:9
