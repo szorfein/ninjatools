@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="Patched font including powerline symbol and more"
 HOMEPAGE="https://github.com/ryanoasis/nerd-fonts"
-SRC_URI="https://github.com/ryanoasis/nerd-fonts/releases/download/v${PV}/Iosevka.zip"
+SRC_URI="https://github.com/ryanoasis/nerd-fonts/releases/download/v${PV}/Iosevka.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
