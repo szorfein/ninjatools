@@ -7,3 +7,7 @@ sys-kernel/gentoo-sources:5.5
 #
 sys-devel/clang:7
 sys-devel/clang:9
+
+# gcc >=10, don't work with hardened kernel, options GCC_PLUGINS... 
+sys-devel/gcc:10
+sys-devel/gcc:11
