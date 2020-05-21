@@ -31,3 +31,7 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
+
+each_ruby_compile() {
+	cp -a ext lib/ext || die
+}
