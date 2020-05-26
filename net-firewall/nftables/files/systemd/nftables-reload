@@ -1,5 +1,0 @@
-#! /sbin/nft
-
-flush ruleset
-include "/var/lib/nftables/rules-save"
-
