@@ -48,7 +48,7 @@ dev-libs/nspr
 net-print/cups
 sys-apps/dbus
 dev-libs/expat
-media-libs/alsa-lib
+>=media-libs/alsa-lib-1.0.19:=
 x11-libs/pango
 x11-libs/cairo
 dev-libs/gobject-introspection
@@ -66,7 +66,7 @@ media-libs/harfbuzz
 media-libs/fontconfig
 media-libs/freetype
 x11-libs/pixman
->=media-libs/libpng-1.6.34
+media-libs/libpng:=
 media-libs/libepoxy
 dev-libs/libbsd
 dev-libs/libunistring
