@@ -16,6 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RDEPEND="
+  sys-apps/iproute2
+"
+
 ruby_add_rdepend "
 	dev-ruby/rainbow
 	dev-ruby/interfacez
