@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils multilib savedconfig toolchain-funcs
+inherit eutils multilib git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="Simple terminal implementation for X with Xresources support and other patches"
 HOMEPAGE="https://github.com/gnotclub/xst"
-SRC_URI="https://github.com/gnotclub/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="${HOMEPAGE}"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
