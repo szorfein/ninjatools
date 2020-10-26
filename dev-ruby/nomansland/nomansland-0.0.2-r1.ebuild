@@ -13,13 +13,9 @@ HOMEPAGE="https://github.com/szorfein/nomansland https://rubygems.org/gems/noman
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
-
-
-
-

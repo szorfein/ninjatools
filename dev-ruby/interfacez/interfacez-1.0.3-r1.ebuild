@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/picatz/interfacez https://rubygems.org/gems/interfa
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 all_ruby_prepare() {
