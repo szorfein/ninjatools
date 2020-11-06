@@ -1,0 +1,4 @@
+---
+:mac: true
+:hostname: true
+:card_match: !ruby/regexp /^en/
