@@ -1,4 +1,2 @@
-amd64 ninjatools/amd64/17.1/hardened stable
-amd64 ninjatools/amd64/17.1/hardened/selinux stable
-amd64 ninjatools/amd64/17.1/no-multilib/hardened stable
-amd64 ninjatools/amd64/17.1/no-multilib/hardened/selinux stable
+amd64 17.1/systemd-hardened stable
+amd64 17.1/systemd-hardened-no-multilib stable

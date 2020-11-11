@@ -1,5 +1,0 @@
-# base hardened flags
-USE="${USE} orc pic"
-
-# gentoo doesn't support pax anymore
-USE="${USE} -pax_kernel"

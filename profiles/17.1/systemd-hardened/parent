@@ -1,2 +1,3 @@
 ..
 gentoo:features/hardened/amd64
+gentoo:targets/systemd
