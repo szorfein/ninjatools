@@ -1,16 +1,16 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit font
 
 DESCRIPTION="Patched font including powerline symbol and more"
 HOMEPAGE="https://github.com/ryanoasis/nerd-fonts"
-SRC_URI="https://github.com/ryanoasis/nerd-fonts/releases/download/v${PV}/RobotoMono.zip"
+SRC_URI="https://github.com/ryanoasis/nerd-fonts/releases/download/v${PV}/RobotoMono.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
