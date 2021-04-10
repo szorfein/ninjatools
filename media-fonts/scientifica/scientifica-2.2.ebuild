@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
 DESCRIPTION="Tall, condensed, bitmap font for geeks"
 HOMEPAGE="https://github.com/NerdyPepper/scientifica"
-SRC_URI="https://raw.githubusercontent.com/NerdyPepper/${PN}/master/${P}.bdf"
+SRC_URI="https://github.com/NerdyPepper/${PN}/releases/download/v${PV}/${PN}.tar"
 
 LICENSE=""
 SLOT="0"
@@ -17,10 +17,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 FONT_SUFFIX="bdf"
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/${PN}/bdf"
 FONT_S="${S}"
-
-src_unpack() {
-	install -dm755 "${S}"
-	cp "${S}"/../../distdir/${P}.bdf "${S}/${PN}.bdf"
-}
+FONT_CONF=( ${FILESDIR}/75-yes-scientifica.conf )
