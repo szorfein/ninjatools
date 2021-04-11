@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
 inherit linux-info autotools
 
@@ -13,18 +13,22 @@ SRC_URI="https://github.com/karlstav/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa pulseaudio +ncurses"
+IUSE="alsa debug pulseaudio portaudio sndio system-iniparser"
+
+DOCS=( README.md example_files/ )
 
 CDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
+	portaudio? ( media-libs/portaudio )
+	sndio? ( media-sound/sndio )
 "
 
 RDEPEND="
 	${CDEPEND}
-	>=sci-libs/fftw-3
+	sci-libs/fftw:3.0
 	sys-libs/ncurses
-	<dev-libs/iniparser-4
+	system-iniparser? ( dev-libs/iniparser:4 )
 "
 
 DEPEND="${CDEPEND}"
@@ -43,14 +47,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-	--enable-legacy_iniparser \
-	|| die "configure failed"
+		$(use_enable debug) \
+		$(use_enable alsa input-alsa) \
+		$(use_enable pulseaudio input-pulse) \
+		$(use_enable portaudio input-portaudio) \
+		$(use_enable sndio input-sndio) \
+		$(use_enable system-iniparser) \
+		--docdir="${EREFIX}/usr/share/doc/${PF}"
 }
 
 src_compile() {
@@ -58,7 +67,8 @@ src_compile() {
 }
 
 src_install() {
-	default
+	einstalldocs
+	emake DESTDIR="${D}" PREFIX=/usr install
 }
 
 pkg_postinst() {
