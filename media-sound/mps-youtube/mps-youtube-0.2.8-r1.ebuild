@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Terminal-based YouTube player and downloader"
