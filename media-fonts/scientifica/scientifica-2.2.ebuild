@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Tall, condensed, bitmap font for geeks"
 HOMEPAGE="https://github.com/NerdyPepper/scientifica"
-SRC_URI="https://github.com/NerdyPepper/${PN}/releases/download/v${PV}/${PN}.tar"
+SRC_URI="https://github.com/NerdyPepper/${PN}/releases/download/v${PV}/${PN}.tar -> ${P}.tar"
 
 LICENSE=""
 SLOT="0"
