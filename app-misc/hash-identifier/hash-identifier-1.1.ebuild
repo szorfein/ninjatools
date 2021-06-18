@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit python-r1 python-utils-r1
 
 DESCRIPTION="hash identifier"
