@@ -11,11 +11,11 @@ hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 sw ta te th tr uk vi zh-CN zh-TW
 "
 
-inherit chromium-2 xdg-utils
+inherit chromium-2 xdg-utils desktop
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-browser-${PV}-linux-amd64.zip -> ${P}.zip"
+SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-browser-nightly-${PV}-linux-amd64.zip -> ${P}.zip"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -42,6 +42,7 @@ x11-libs/libXrandr
 x11-libs/libXau
 x11-libs/libXdmcp
 x11-libs/libXinerama
+x11-libs/libxkbcommon
 dev-libs/glib
 dev-libs/nss
 dev-libs/nspr
@@ -57,7 +58,7 @@ app-accessibility/at-spi2-core
 app-accessibility/at-spi2-atk
 x11-libs/gtk+
 x11-libs/gdk-pixbuf
-virtual/libffi
+dev-libs/libffi
 dev-libs/libpcre
 net-libs/gnutls
 sys-libs/zlib
@@ -91,6 +92,8 @@ src_prepare() {
 }
 
 src_install() {
+	shopt -s extglob
+
     declare BRAVE_HOME=/opt/${BRAVE_PN}
 
 	dodir ${BRAVE_HOME%/*}
@@ -99,7 +102,9 @@ src_install() {
 	doins -r *
 
 	exeinto ${BRAVE_HOME}
-	doexe brave
+	#doexe brave
+	doexe brave chrome_crashpad_handler
+
 	dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
 
 	 #newicon "${FILESDIR}/braveAbout.png" "${PN}.png" || die
