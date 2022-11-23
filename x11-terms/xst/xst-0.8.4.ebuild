@@ -35,11 +35,8 @@ src_prepare() {
 		-e '/^STLDFLAGS/s|= .*|= $(LDFLAGS) $(LIBS)|g' \
 		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
 		config.mk || die
-	sed -i \
-		-e '/tic/d' \
-		Makefile || die
 
-	restore_config config.h
+	#sed -i -e '/tic/d' Makefile || die
 }
 
 src_configure() {

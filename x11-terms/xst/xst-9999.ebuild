@@ -34,7 +34,7 @@ src_prepare() {
 		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
 		config.mk || die
 
-	sed -i -e '/tic/d' Makefile || die
+	#sed -i -e '/tic/d' Makefile || die
 }
 
 src_configure() {
