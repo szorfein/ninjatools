@@ -1,6 +1,6 @@
 EAPI=7
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby31 ruby 32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -29,4 +29,8 @@ ruby_add_rdepend "
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+}
+
+all_ruby_install() {
+	newconfd "${FILESDIR}"/amnesie.yaml amnesie.yaml
 }
