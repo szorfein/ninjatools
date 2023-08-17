@@ -1,6 +1,6 @@
 EAPI=7
 
-USE_RUBY="ruby31 ruby 32"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
