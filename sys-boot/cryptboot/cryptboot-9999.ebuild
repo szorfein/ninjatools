@@ -1,7 +1,7 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3
 
 DESCRIPTION="Encrypted boot partition manager with UEFI Secure Boot support"
