@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
 SRC_URI="https://github.com/LemonBoy/bar/archive/v${PV}.zip"
 KEYWORDS="~amd64"
